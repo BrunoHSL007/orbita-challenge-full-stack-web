@@ -30,3 +30,9 @@
 /home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/obj/Debug/netcoreapp3.1/backend.dll
 /home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/obj/Debug/netcoreapp3.1/backend.pdb
 /home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/obj/Debug/netcoreapp3.1/backend.genruntimeconfig.cache
+/home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/bin/Debug/netcoreapp3.1/System.Web.Cors.dll
+/home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/bin/Debug/netcoreapp3.1/System.Net.Http.Formatting.dll
+/home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/bin/Debug/netcoreapp3.1/System.Web.Http.dll
+/home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/bin/Debug/netcoreapp3.1/System.Web.Http.Cors.dll
+/home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/home/brunolaier/Documentos/Projetos/orbita-challenge-full-stack-web/backend/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll

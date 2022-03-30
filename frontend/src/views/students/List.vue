@@ -39,24 +39,24 @@
 
     <v-list two-line>
       <v-list-item-group>
-        <template v-for="(item, index) in items">
-          <v-list-item :key="item.title">
+        <template v-for="(student, index) in students">
+          <v-list-item :key="student.id">
             <v-row align="center">
               <v-col align="center">
                 <v-list-item-content>
-                  <v-list-item-title v-text="item.ra"></v-list-item-title>
+                  <v-list-item-title v-text="student.id"></v-list-item-title>
                 </v-list-item-content>
               </v-col>
 
               <v-col align="center">
                 <v-list-item-content>
-                  <v-list-item-title v-text="item.name"></v-list-item-title>
+                  <v-list-item-title v-text="student.name"></v-list-item-title>
                 </v-list-item-content>
               </v-col>
 
               <v-col align="center">
                 <v-list-item-content>
-                  <v-list-item-title v-text="item.cpf"></v-list-item-title>
+                  <v-list-item-title v-text="student.cpf"></v-list-item-title>
                 </v-list-item-content>
               </v-col>
 
@@ -77,7 +77,7 @@
           </v-list-item>
 
           <v-divider
-            v-if="index < items.length"
+            v-if="index < student.length"
             :key="index"
           ></v-divider>
         </template>
@@ -88,30 +88,23 @@
 </template>
 <script>
 
+  import Student from '../../services/students'
+
   export default {
     name: 'Home',
 
     components: {
     },
-    data: () => ({
-      selected: [2],
-      items: [
-        {
-          cpf: '999.999.999-99',
-          name: `Bruno`,
-          ra: '12222',
-        },
-        {
-          cpf: '990.999.999-99',
-          name: `Pessoa 2`,
-          ra: '12345',
-        },
-        {
-          cpf: '123.999.999-99',
-          name: `Pessoa 3`,
-          ra: '21212',
-        },
-      ],
-    }),
+    data(){
+      return {
+        students: []
+      }
+    },
+    mounted(){
+      Student.list().then(response =>{
+        console.log(response.data)
+        this.students = response.data
+      })
+    }
   }
 </script>
