@@ -1,4 +1,8 @@
-$HEADER$namespace $NAMESPACE$
+namespace backend.ViewModel
 {
-  public class $CLASS$ {$END$}
+    public class UpdateStudentViewModel
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+    }
 }
