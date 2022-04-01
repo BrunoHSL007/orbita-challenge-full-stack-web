@@ -35,6 +35,9 @@ namespace backend
             services.AddControllers();
             services.AddCors(options => options.AddDefaultPolicy(
                 builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                
             ));
         }
 

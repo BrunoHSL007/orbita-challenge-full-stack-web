@@ -6,11 +6,12 @@
           <v-text-field
             label="Digite sua busca"
             outlined
-          ></v-text-field>
+          v-model="phrase"></v-text-field>
         </v-col>
         <v-col>
-          <v-btn to="/edit-student">Cadastrar</v-btn>
+          <v-btn @click="searchItems"><v-icon>mdi-magnify</v-icon></v-btn>          
         </v-col>
+        <v-col><v-btn to="/edit-student">Cadastrar</v-btn></v-col>        
       </v-row>
     </v-container>
     <v-container
@@ -63,11 +64,11 @@
               <v-col>
                 <v-list-item-content>
                   
-                  <v-btn to="/edit-student" icon color="grey lighten-1">
+                  <v-btn :to="'/edit-student?id='+student.id" icon color="grey lighten-1">
                     <v-icon>mdi-pencil</v-icon>
                   </v-btn>
 
-                  <v-btn icon color="red lighten-2">
+                  <v-btn @click="onDelete(student.id)" icon color="red lighten-2">
                     <v-icon>mdi-delete</v-icon>
                   </v-btn>
 
@@ -87,7 +88,6 @@
   </div>
 </template>
 <script>
-
   import Student from '../../services/students'
 
   export default {
@@ -95,16 +95,39 @@
 
     components: {
     },
+
     data(){
       return {
+        phrase : '',
         students: []
+      };
+    },
+    methods: {
+      searchItems() {
+          Student.list(this.phrase).then(response =>{
+          this.students = response.data
+          console.log(response.data)
+        })
+      },
+      onDelete(id) {
+        if (confirm("Você deseja remover o produto?")){
+          Student.delete(id).then(response =>{
+            console.log(response)
+            alert('Removido com sucesso!')
+            this.searchItems()
+          })
+          .catch(error => {
+            console.log(error)
+            alert('Erro ao remover!')          
+          })
+        }
       }
     },
     mounted(){
-      Student.list().then(response =>{
-        console.log(response.data)
-        this.students = response.data
-      })
+      Student.list(this.phrase).then(response =>{
+          console.log(response.data)
+          this.students = response.data
+        })
     }
   }
 </script>

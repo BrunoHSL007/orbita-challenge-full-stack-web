@@ -16,12 +16,19 @@ namespace backend.Controllers
     {
         [HttpGet]
         [Route("students")]
-        public async Task<IActionResult> GetAsync([FromServices]Context context)
+        public async Task<IActionResult> GetAsync([FromServices]Context context,[FromQuery(Name = "phrase")] string phrase)
         {
-            var students = await context
+            var query = context
                 .Student
-                .AsNoTracking()
-                .ToListAsync();
+                .AsNoTracking();
+            
+            if (!string.IsNullOrEmpty(phrase))
+            {
+                query = query.Where(p => p.Name.ToUpper().Contains(phrase.ToUpper()));
+            }
+
+            var students = await query.ToListAsync();
+            
             return Ok(students);
         }
         [HttpGet]
