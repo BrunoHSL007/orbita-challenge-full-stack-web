@@ -69,15 +69,30 @@
     },
     methods:{
       onCreate(){
-        Student.create(this.student).then(response =>{
-          console.log(response)
-          alert('Salvo com sucesso!')
-          this.$router.push('/') 
-        })
-        .catch(error => {
-          console.log(error)
-          alert('Erro ao salvar!')          
-        })
+        this.id = this.$route.query.id
+        if (this.id>=0){
+          Student.edit(this.student,this.id).then(response =>{
+            console.log(response)
+            alert('Salvo com sucesso!')
+            this.$router.push('/') 
+          })
+          .catch(error => {
+            console.log(error)
+            alert('Erro ao salvar!')          
+          })
+        }
+        else{
+          Student.create(this.student).then(response =>{
+            console.log(response)
+            alert('Salvo com sucesso!')
+            this.$router.push('/') 
+          })
+          .catch(error => {
+            console.log(error)
+            alert('Erro ao salvar!')          
+          })
+          
+        }
       }
     },
     mounted(){

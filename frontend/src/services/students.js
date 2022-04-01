@@ -10,6 +10,10 @@ export default {
         return http.post('students',student)
     },
 
+    edit: (student, id) => {
+        return http.put(`students/${id}`,student)
+    },
+
     get: (id) => {
         return http.get(`students/${id}`)
     },
