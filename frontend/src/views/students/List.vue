@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <v-row>
-        <v-col>
+        <v-col cols="8">
           <v-text-field
             label="Digite sua busca"
             outlined
@@ -30,14 +30,13 @@
         <v-col align="center">
           CPF
         </v-col>
-        <v-col align="center">
+        <v-col>
           Ações
         </v-col>
       </v-row>
-    </v-container>
 
     <v-divider class="grey"></v-divider>
-
+  
     <v-list two-line>
       <v-list-item-group>
         <template v-for="(student, index) in students">
@@ -84,7 +83,7 @@
         </template>
       </v-list-item-group>
     </v-list>
-
+    </v-container>
   </div>
 </template>
 <script>
@@ -110,7 +109,7 @@
         })
       },
       onDelete(id) {
-        if (confirm("Você deseja remover o produto?")){
+        if (confirm("Você deseja remover o aluno?")){
           Student.delete(id).then(response =>{
             console.log(response)
             alert('Removido com sucesso!')

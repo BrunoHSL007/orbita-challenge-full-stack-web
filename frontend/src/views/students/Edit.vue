@@ -24,7 +24,7 @@
           <v-subheader>RA</v-subheader>
         </v-col>
         <v-col cols="9">
-          <v-text-field outlined v-model="student.id"></v-text-field>
+          <v-text-field disabled outlined v-model="student.id"></v-text-field>
         </v-col>
       </v-row>
 
@@ -33,7 +33,8 @@
           <v-subheader>CPF</v-subheader>
         </v-col>
         <v-col cols="9">
-          <v-text-field outlined v-model="student.cpf"></v-text-field>
+          <v-text-field v-if="id>=0" disabled outlined v-model="student.cpf"></v-text-field>
+          <v-text-field v-else outlined v-mask="'###.###.###-##'" v-model="student.cpf"></v-text-field>
         </v-col>
       </v-row>
       <v-row>
@@ -51,7 +52,10 @@
 </template>
 <script>
   import Student from '../../services/students'
+  import {mask} from 'vue-the-mask'
+
   export default{
+    directives: {mask},
     data(){
       return {
         id: -1,
